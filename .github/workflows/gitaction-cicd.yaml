@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - gitaction
 jobs:
   job1:
     runs-on: ubuntu-latest
