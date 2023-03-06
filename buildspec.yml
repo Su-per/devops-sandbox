@@ -17,3 +17,6 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 850738932707.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest
+artifacts:
+  files:
+    - '**/*'
