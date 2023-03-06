@@ -8,7 +8,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...          
+      - echo Building the Docker image...
+      - docker -v
       - docker build -t test .
       - docker tag test:latest 850738932707.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest 
   post_build:
