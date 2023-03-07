@@ -3,9 +3,9 @@ os: linux
 hooks:
   ApplicationStop:
     - location: scripts/kill_container.sh
-      timeout: 20
+      timeout: 30
       runas: ec2-user
   ApplicationStart:
     - location: scripts/start_container.sh
-      timeout: 10
+      timeout: 600
       runas: ec2-user
