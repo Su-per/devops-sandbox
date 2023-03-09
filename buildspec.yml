@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   parameter-store:
-    AWS_DEFAULT_REGION: "TAWS_DEFAULT_REGION"
-    AWS_ACCOUNT_ID: "TAWS_ACCOUNT_ID"
-    IMAGE_REPO_NAME: "TIMAGE_REPO_NAME"
-    IMAGE_TAG: "TIMAGE_TAG"
+    AWS_DEFAULT_REGION: "/CodePipeline/AWS_DEFAULT_REGION"
+    AWS_ACCOUNT_ID: "/CodePipeline/AWS_ACCOUNT_ID"
+    IMAGE_REPO_NAME: "/CodePipeline/IMAGE_REPO_NAME"
+    IMAGE_TAG: "/CodePipeline/IMAGE_TAG"
 phases:
   pre_build:
     commands:
