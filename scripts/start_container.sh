@@ -1,5 +1,10 @@
-aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 850738932707.dkr.ecr.ap-northeast-2.amazonaws.com
+export AWS_DEFAULT_REGION=`aws ssm get-parameters --names "/CodePipeline/AWS_DEFAULT_REGION" --query Parameters[*].Value --output text`
+export AWS_ACCOUNT_ID=`aws ssm get-parameters --names "/CodePipeline/AWS_ACCOUNT_ID" --query Parameters[*].Value --output text`
+export IMAGE_REPO_NAME=`aws ssm get-parameters --names "/CodePipeline/IMAGE_REPO_NAME" --query Parameters[*].Value --output text`
+export IMAGE_TAG=`aws ssm get-parameters --names "/CodePipeline/IMAGE_TAG" --query Parameters[*].Value --output text`
 
-docker pull 850738932707.dkr.ecr.ap-northeast-2.amazonaws.com/test-ecr:latest
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
-docker run -d -p 80:80 850738932707.dkr.ecr.ap-northeast-2.amazonaws.com/test-ecr:latest
+docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+
+docker run -d -p 80:80 $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
