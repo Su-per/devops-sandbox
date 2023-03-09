@@ -6,5 +6,4 @@ app = FastAPI()
 
 @app.get("/")
 def index():
-    while True:
-        pass
+    return {"server_id": r}
